@@ -76,7 +76,6 @@
 			container.appendChild(this._alts);
 
 			L.DomEvent.addListener(form, 'submit', this._geocode, this);
-			L.DomEvent.addListener(icon, 'click', this._geocode, this);
 
 			if (this.options.collapsed) {
 				if (this.options.expand === 'click') {
@@ -96,6 +95,7 @@
 			}
 
 			else {
+				L.DomEvent.addListener(icon, 'click', this._geocode, this);
 				this._expand();
 			}
 
@@ -196,6 +196,7 @@
 			this._container.className = this._container.className.replace(' leaflet-control-ocd-search-expanded', '');
 			L.DomUtil.addClass(this._alts, 'leaflet-control-ocd-search-alternatives-minimized');
 			L.DomUtil.removeClass(this._errorElement, 'leaflet-control-ocd-search-error');
+			L.DomUtil.addClass(this._clearResultInput, 'hide');
 		},
 
 		_clearResults: function () {
